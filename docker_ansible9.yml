@@ -1,0 +1,13 @@
+---
+- name: Create workers for the swarm
+  hosts: workers
+  tasks:
+    - name: Copy token to make nodes as workers
+      shell: docker swarm join --token SWMTKN-1-2vp8n6yajp98sboc1rqgpjefrtac3cs8mph9k3zzrs3pheoeb5-83i0n3s5on7n1mvttfss5ott4 172.31.30.198:2377
+    - name: Change name of servers as workers
+      copy:
+        content: Worker
+        dest: /etc/hostname
+    - name: Restart workers
+      shell: init 6
+...

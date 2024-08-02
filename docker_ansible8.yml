@@ -1,0 +1,13 @@
+---
+- name: Create a docker swarm manager
+  hosts: manager
+  tasks:
+    - name: Create a manager by setting up swarm
+      shell: docker swarm init
+    - name: Change the name of the server
+      copy:
+        content: Manager
+        dest: /etc/hostname
+    - name: Restart the manager
+      shell: init 6
+...

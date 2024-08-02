@@ -1,0 +1,9 @@
+---
+- name: clone git repo
+  hosts: all
+  tasks:
+    - name: Clone git
+      git:
+        repo: https://github.com/IntelliqDevops/Kubernetes9.git
+        dest: /tmp/mygit
+...
